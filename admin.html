@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel | Asem Flowers 🌸</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">📊 Admin Panel</div>
+
+<nav class="nav">
+<a class="nav-btn" href="index.html">Сайт</a>
+<a class="nav-btn" href="cart.html">Себет</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>📦 Барлық тапсырыстар</h1>
+
+</section>
+
+<section id="ordersBox" class="cart-page"></section>
+
+<script>
+
+function loadOrders(){
+
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    let box = document.getElementById("ordersBox");
+
+    if(orders.length === 0){
+        box.innerHTML = "<h3>Тапсырыс жоқ 😢</h3>";
+        return;
+    }
+
+    orders.reverse().forEach(order => {
+
+        let itemsHTML = "";
+
+        order.items.forEach(i=>{
+            itemsHTML += `<li>${i.name} - ${i.price} ₸</li>`;
+        });
+
+        box.innerHTML += `
+        <div class="card">
+            <h3>👤 ${order.name}</h3>
+            <p>📞 ${order.phone}</p>
+            <p>🏠 ${order.address}</p>
+            <p>📝 ${order.comment}</p>
+            <p>⏰ ${order.time}</p>
+            <ul>${itemsHTML}</ul>
+            <h4>💰 ${order.total} ₸</h4>
+        </div>
+        `;
+    });
+}
+
+loadOrders();
+
+</script>
+
+</body>
+</html>

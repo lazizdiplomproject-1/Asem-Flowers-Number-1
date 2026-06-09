@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Каталог | Asem Flowers 🌸</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">Asem Flowers 🌸</div>
+
+<nav class="nav">
+
+<a class="nav-btn" href="index.html">🏠 Басты бет</a>
+<a class="nav-btn" href="catalog.html">🛍️ Каталог</a>
+<a class="nav-btn cart" href="cart.html">🛒 Себет (<span id="cartCount">0</span>)</a>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+<h1>🌸 Гүлдер каталогы</h1>
+<p>Ең әдемі және жаңа гүлдер топтамасы</p>
+
+<!-- SEARCH -->
+<input 
+type="text" 
+id="searchInput" 
+placeholder="🔍 Гүл іздеу (мысалы: раушан)" 
+onkeyup="searchFlowers()"
+style="padding:10px; width:80%; max-width:400px; margin-top:10px;"
+>
+
+<!-- FILTERS -->
+<div class="filters" style="margin-top:15px;">
+
+<button onclick="filterFlowers('all')">Барлығы</button>
+<button onclick="filterFlowers('rose')">🌹 Раушан</button>
+<button onclick="filterFlowers('tulip')">🌷 Қызғалдақ</button>
+<button onclick="filterFlowers('bouquet')">💐 Букет</button>
+<button onclick="filterFlowers('gift')">🎁 Сыйлық</button>
+
+</div>
+
+</section>
+
+<!-- PRODUCTS -->
+<section class="cards">
+
+<!-- 1 -->
+<div class="card" data-type="rose">
+<span class="heart" onclick="toggleFav(this)">♡</span>
+<span class="badge">🔥 Хит</span>
+<img src="images/rose.jpg">
+<div class="stars">★★★★★</div>
+<h3>🌹 Қызыл раушан</h3>
+<p><b>12 000 ₸</b></p>
+<button onclick="addToCart('Қызыл раушан',12000)">🛒 Себетке қосу</button>
+</div>
+
+<!-- 2 -->
+<div class="card" data-type="rose">
+<span class="heart" onclick="toggleFav(this)">♡</span>
+<img src="images/white-rose.jpg">
+<div class="stars">★★★★★</div>
+<h3>🤍 Ақ раушан</h3>
+<p><b>13 000 ₸</b></p>
+<button onclick="addToCart('Ақ раушан',13000)">🛒 Себетке қосу</button>
+</div>
+
+<!-- 3 -->
+<div class="card" data-type="tulip">
+<span class="heart" onclick="toggleFav(this)">♡</span>
+<span class="badge">🌸 Жаңа</span>
+<img src="images/tulip.jpg">
+<div class="stars">★★★★★</div>
+<h3>🌷 Қызғалдақ</h3>
+<p><b>10 000 ₸</b></p>
+<button onclick="addToCart('Қызғалдақ',10000)">🛒 Себетке қосу</button>
+</div>
+
+<!-- 4 -->
+<div class="card" data-type="rose">
+<span class="heart" onclick="toggleFav(this)">♡</span>
+<img src="images/peony.jpg">
+<div class="stars">★★★★★</div>
+<h3>🌺 Пион</h3>
+<p><b>16 000 ₸</b></p>
+<button onclick="addToCart('Пион',16000)">🛒 Себетке қосу</button>
+</div>
+
+<!-- 5 -->
+<div class="card" data-type="sunflower">
+<span class="heart" onclick="toggleFav(this)">♡</span>
+<img src="images/sunflower.jpg">
+<div class="stars">★★★★★</div>
+<h3>🌻 Күнбағыс</h3>
+<p><b>11 000 ₸</b></p>
+<button onclick="addToCart('Күнбағыс',11000)">🛒 Себетке қосу</button>
+</div>
+
+<!-- 6 -->
+<div class="card" data-type="lavender">
+<span class="heart" onclick="toggleFav(this)">♡</span>
+<img src="images/lavender.jpg">
+<div class="stars">★★★★★</div>
+<h3>🪻 Лаванда</h3>
+<p><b>14 000 ₸</b></p>
+<button onclick="addToCart('Лаванда',14000)">🛒 Себетке қосу</button>
+</div>
+
+<!-- 7 -->
+<div class="card" data-type="bouquet">
+<span class="heart" onclick="toggleFav(this)">♡</span>
+<span class="badge">💐 Топ</span>
+<img src="images/bouquet.jpg">
+<div class="stars">★★★★★</div>
+<h3>💐 Аралас букет</h3>
+<p><b>15 000 ₸</b></p>
+<button onclick="addToCart('Аралас букет',15000)">🛒 Себетке қосу</button>
+</div>
+
+<!-- 8 -->
+<div class="card" data-type="gift">
+<span class="heart" onclick="toggleFav(this)">♡</span>
+<img src="images/daisy.jpg">
+<div class="stars">★★★★★</div>
+<h3>🎁 Түймедақ жинағы</h3>
+<p><b>9 000 ₸</b></p>
+<button onclick="addToCart('Түймедақ',9000)">🛒 Себетке қосу</button>
+</div>
+
+</section>
+
+<!-- INFO -->
+<section class="cta">
+
+<h2>💡 Кеңес</h2>
+<p>
+Гүл таңдағанда маусымға және адамның мінезіне назар аударыңыз 🌸
+</p>
+
+</section>
+
+<div id="toast"></div>
+<!-- PRODUCT MODAL -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+
+    <span class="close" onclick="closeModal()">×</span>
+
+    <img id="modalImg" src="" alt="product">
+
+    <h2 id="modalTitle"></h2>
+
+    <p id="modalPrice"></p>
+
+    <p id="modalDesc">
+      Бұл өнім — ең жаңа және сапалы гүлдерден жасалған арнайы композиция 🌸
+    </p>
+
+    <button id="modalAddBtn">🛒 Себетке қосу</button>
+
+  </div>
+</div>
+  
+<script src="script.js"></script>
+
+</body>
+</html>

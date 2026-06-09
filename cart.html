@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Себет | Asem Flowers 🌸</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">Asem Flowers 🌸</div>
+
+<nav class="nav">
+
+<a class="nav-btn" href="index.html">🏠 Басты бет</a>
+<a class="nav-btn" href="catalog.html">🛍️ Каталог</a>
+
+<a class="nav-btn cart" href="cart.html">
+🛒 Себет (<span id="cartCount">0</span>)
+</a>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+<h1>🛒 Сіздің себетіңіз</h1>
+<p>Таңдалған гүлдер мен букеттер осында сақталады</p>
+
+</section>
+
+<!-- CART CONTENT -->
+<section class="cart-page">
+
+<!-- EMPTY STATE -->
+<div id="emptyText" style="text-align:center; margin:20px 0; font-size:18px;">
+Себет бос 😢<br>
+<a href="catalog.html" style="color:green; text-decoration:none;">
+Каталогқа өту
+</a>
+</div>
+
+<!-- CART ITEMS -->
+<div id="cart-items"></div>
+
+<!-- TOTAL -->
+<h2 id="total" style="margin-top:20px;">Жалпы: 0 ₸</h2>
+
+<!-- ACTIONS -->
+<div style="margin-top:25px; display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+
+<button onclick="checkoutWhatsApp()" class="big-btn green">
+💬 WhatsApp арқылы тапсырыс беру
+</button>
+
+<button onclick="clearCart()" class="big-btn">
+🗑️ Себетті тазалау
+</button>
+
+</div>
+
+</section>
+
+<!-- INFO BLOCK -->
+<section class="info" style="padding:30px; text-align:center;">
+
+<h2>📦 Тапсырыс қалай жүреді?</h2>
+
+<p>
+1. Себетке өнім қосасыз →  
+2. WhatsApp арқылы тапсырыс бересіз →  
+3. Біз 1–2 сағат ішінде жеткіземіз 🚚
+</p>
+
+</section>
+
+<!-- GUARANTEE -->
+<section class="info" style="padding:20px; text-align:center;">
+
+<h2>🛡️ Кепілдік</h2>
+
+<p>
+🌸 Тек жаңа гүлдер  
+🚚 Уақытында жеткізу  
+💰 Сапаға кепілдік  
+</p>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+<h3>Asem Flowers 🌸</h3>
+
+<p>📍 Түркістан қаласы</p>
+<p>📞 77027624292</p>
+<p>📷 Instagram: @asem___flowers</p>
+
+<p>© 2026 Asem Flowers</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

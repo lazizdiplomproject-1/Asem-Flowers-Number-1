@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Тапсырыс беру | Asem Flowers 🌸</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">Asem Flowers 🌸</div>
+
+<nav>
+<a href="index.html">Басты бет</a>
+<a href="catalog.html">Каталог</a>
+<a href="cart.html">Себет</a>
+<a href="checkout.html">Тапсырыс</a>
+</nav>
+
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+<h1>🛒 Тапсырысты рәсімдеу</h1>
+<p>Барлық ақпаратты тексеріп, тапсырысты аяқтаңыз</p>
+
+</section>
+
+<!-- ORDER SUMMARY -->
+<section class="checkout-box">
+
+<div id="orderSummary" class="order-summary"></div>
+
+<div class="delivery-info">
+
+<h3>🚚 Жеткізу туралы</h3>
+<p>• 1–2 сағат ішінде жеткізу</p>
+<p>• Түркістан қаласы бойынша</p>
+<p>• Қауіпсіз және жылдам сервис</p>
+
+</div>
+
+</section>
+
+<!-- FORM -->
+<section>
+
+<form class="order-form" onsubmit="placeOrder(event)">
+
+<input type="text" id="name" placeholder="Атыңыз" required>
+<input type="tel" id="phone" placeholder="Телефон нөмірі" required>
+<input type="text" id="address" placeholder="Жеткізу мекенжайы" required>
+
+<textarea id="comment" placeholder="Қосымша ақпарат"></textarea>
+
+<button type="submit">💐 Тапсырыс беру</button>
+
+</form>
+
+</section>
+
+<!-- SUCCESS MESSAGE -->
+<div id="successBox" style="display:none; text-align:center; padding:20px;">
+<h2>✅ Тапсырыс қабылданды!</h2>
+<p>Жақын арада сізбен байланысамыз</p>
+<a id="waLink" target="_blank">
+<button>📱 WhatsApp-қа жіберу</button>
+</a>
+</div>
+
+<script src="script.js"></script>
+
+<!-- ORDER SCRIPT -->
+<script>
+function placeOrder(e){
+    let order = {
+    name,
+    phone,
+    address,
+    comment,
+    items: cart,
+    total: cart.reduce((sum, i) => sum + i.price, 0),
+    time: new Date().toLocaleString()
+};
+
+saveOrder(order);
+    e.preventDefault();
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if(cart.length === 0){
+        alert("Себет бос!");
+        return;
+    }
+
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let address = document.getElementById("address").value;
+    let comment = document.getElementById("comment").value;
+
+    let text = `🌸 Жаңа тапсырыс:%0A`;
+
+    cart.forEach(item => {
+        text += `• ${item.name} - ${item.price} ₸%0A`;
+    });
+
+    let total = cart.reduce((sum, i) => sum + i.price, 0);
+
+    text += `%0A💰 Жалпы: ${total} ₸%0A`;
+    text += `%0A👤 Аты: ${name}%0A📞 Тел: ${phone}%0A🏠 Адрес: ${address}%0A📝 Ескертпе: ${comment}`;
+
+    let url = `https://wa.me/77027624292?text=${text}`;
+
+    document.getElementById("successBox").style.display = "block";
+    document.getElementById("waLink").href = url;
+
+    localStorage.removeItem("cart");
+}
+</script>
+
+<!-- LOAD CART -->
+<script>
+window.onload = function(){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let box = document.getElementById("orderSummary");
+
+    if(cart.length === 0){
+        box.innerHTML = "<p>🛒 Себет бос</p>";
+        return;
+    }
+
+    let total = 0;
+    let html = "<h2>📦 Сіздің тапсырыс</h2>";
+
+    cart.forEach(item => {
+        total += item.price;
+        html += `<div class="order-item">${item.name} — ${item.price} ₸</div>`;
+    });
+
+    html += `<h3>💰 Жалпы: ${total} ₸</h3>`;
+
+    box.innerHTML = html;
+};
+</script>
+
+</body>
+</html>
